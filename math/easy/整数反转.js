@@ -11,12 +11,12 @@
 
 示例 3:
 输入: 120
-输出: 21 
+输出: 21
 */
 
 /* 注意:
 
-假设我们的环境只能存储得下 32 位的有符号整数，则其数值范围为 [−2**31,  2**31 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。 */
+假设我们的环境只能存储得下 32位的有符号整数，则其数值范围为 [−2**31, 2**31 − 1]。请根据这个假设，如果反转后整数溢出那么就返回 0。 */
 
 /**
  * @param {number} x
@@ -25,15 +25,14 @@
 var reverse = function(x) {
   let v = Math.abs(x);
   let result = 0;
-  while(v !== 0) {
-    result = 10 * result + v % 10;
+  while (v !== 0) {
+    result = (10 * result) + (v % 10);
     v = (v / 10) | 0; // Math.floor(v / 10);
   }
   if (x < 0) {
-    return result <= Math.pow(2,31) ? -result : 0;
-  } else {
-    return result <= Math.pow(2,31) - 1 ? result : 0;
+    return result <= Math.pow(2, 31) ? -result : 0;
   }
+  return result <= Math.pow(2, 31) - 1 ? result : 0;
 };
 
 // 转成字符串
@@ -47,9 +46,7 @@ var reverse = function(x) {
   }
   result = arr.slice(i).join('');
   if (x < 0) {
-    return result <= Math.pow(2,31) ? -result : 0;
-  } else {
-    return result <= Math.pow(2,31) - 1 ? result : 0;
+    return result <= Math.pow(2, 31) ? -result : 0;
   }
+  return result <= Math.pow(2, 31) - 1 ? result : 0;
 };
-

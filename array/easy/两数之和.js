@@ -27,16 +27,16 @@ var twoSum2 = function (nums, target) {
 
   function recursion(target, idx) {
     if (idx === nums.length - 1) return;
-    const firstValue = nums[idx]
+    const firstValue = nums[idx];
     for (let i = idx + 1; i < nums.length; i++) {
       if (firstValue + nums[i] === target) {
         result = [idx, i];
         return;
       }
     }
-    return recursion(target, ++idx)
+    return recursion(target, ++idx);
   }
-  recursion(target, 0)
+  recursion(target, 0);
   return result || -1;
 };
 
@@ -57,35 +57,26 @@ var twoSum3 = function (nums, target) {
 // 3：边存边比较，时间复杂度O(n)
 var twoSum4 = function (nums, target) {
   const map = new Map();
-  let len = nums.length;
   for (let i = 0; i < nums.length; i++) {
     const n = map.get(target - nums[i]);
     if (n >= 0 && i !== n) {
       return [n, i];
-    } else {
-      map.set(nums[i], i)
     }
+    map.set(nums[i], i);
   }
   return -1;
 };
 
 // 3.2 尾调优化
-var twoSum5 = function (nums, target, i = 0, map = new Map()) {
+function twoSum5(nums, target, i = 0, map = new Map()) {
   const n = map.get(target - nums[i]);
   if (n >= 0 && i !== n) {
     return [n, i];
-  } else {
-    map.set(nums[i], i)
-    i++;
-    if (i < nums.length - 1) {
-      return twoSum5(nums, target, i, map)
-    } else {
-      return -1;
-    }
   }
+  map.set(nums[i], i);
+  i++;
+  if (i < nums.length - 1) {
+    return twoSum5(nums, target, i, map);
+  }
+  return -1;
 }
-
-// const v = twoSum2([2, 7, 11, 15], 9)
-// console.log(v)
-
-
