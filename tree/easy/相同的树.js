@@ -55,20 +55,10 @@ function isSameTree(p, q) {
   if (p.val !== q.val) return false;
 
   // 比较左节点
-  if ((p.left && !q.left) || (!p.left && q.left)) {
-    return false;
-  }
-  if (p.left && q.left) {
-    if (!isSameTree(p.left, q.left)) return false;
-  }
+  if (!isSameTree(p.left, q.left)) return false;
 
   // 比较右节点
-  if ((p.right && !q.right) || (!p.right && q.right)) {
-    return false;
-  }
-  if (p.right && q.right) {
-    if (!isSameTree(p.right, q.right)) return false;
-  }
+  if (!isSameTree(p.right, q.right)) return false;
 
   return true;
 }
