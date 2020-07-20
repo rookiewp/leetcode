@@ -65,12 +65,6 @@ function isSameTree(p, q) {
 
 // 使用循环
 function isSameTree2(p, q) {
-  // 如果2个树都为null, 认为相等
-  if (!p && !q) return true;
-
-  // 如果有一个数为null, 则认为不等
-  if ((p && !q) || (!p && q)) return false;
-
   const queue = [p, q];
   while (queue.length > 0) {
     const node1 = queue.shift();
@@ -79,8 +73,8 @@ function isSameTree2(p, q) {
     // 如果2个节点都不存在，continue
     if (!node1 && !node2) continue;
 
-    // 如果有一个数为null, 则认为不等
-    if ((node1 && !node2) || (!node1 && node2)) return false;
+    // 如果有一个节点为null, 则认为不等
+    if (!node1 || !node2) return false;
 
     // 如果2个节点都存在，比较值是否相等
     if (node1.val !== node2.val) return false;
