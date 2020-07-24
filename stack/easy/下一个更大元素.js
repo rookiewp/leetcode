@@ -27,28 +27,22 @@ function nextGreaterElement(nums1, nums2) {
   const stack = [nums2[0]];
   const map = new Map();
   for (let i = 1; i < nums2.length; i++) {
-    let stackTopValue = stack[stack.length - 1];
     const nextValue = nums2[i];
-    // debugger
-    if (stackTopValue < nextValue) {
-      map.set(stackTopValue, nextValue);
-      stack.pop();
-      while (stack.length > 0) {
-        stackTopValue = stack[stack.length - 1];
-        if (stackTopValue < nextValue) {
-          map.set(stackTopValue, nextValue);
-          stack.pop();
-        } else {
-          break;
-        }
+
+    while (stack.length > 0) {
+      const stackTopValue = stack[stack.length - 1];
+      if (stackTopValue < nextValue) {
+        map.set(stackTopValue, nextValue);
+        stack.pop();
+      } else {
+        break;
       }
-      stack.push(nextValue);
-    } else {
-      stack.push(nextValue);
     }
+    stack.push(nextValue);
   }
   if (stack.length > 0) {
     stack.forEach(item => map.set(item, -1));
   }
+  console.log(map);
   return nums1.map(item => map.get(item));
 }
