@@ -43,6 +43,5 @@ function nextGreaterElement(nums1, nums2) {
   if (stack.length > 0) {
     stack.forEach(item => map.set(item, -1));
   }
-  console.log(map);
   return nums1.map(item => map.get(item));
 }
