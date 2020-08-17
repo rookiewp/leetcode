@@ -1,12 +1,8 @@
 // 前序遍历 递归
 function iterateTree(treeNode) {
-  console.log(treeNode.value);
-  if (treeNode.left) {
-    iterateTree(treeNode.left);
-  }
-  if (treeNode.right) {
-    iterateTree(treeNode.right);
-  }
+  if (treeNode) console.log(treeNode.value);
+  if (treeNode.left) iterateTree(treeNode.left);
+  if (treeNode.right) iterateTree(treeNode.right);
 }
 
 // 前序遍历 循环
@@ -26,13 +22,9 @@ function iterateTree2(treeNode) {
 
 // 中序遍历 递归
 function iterateTree3(treeNode) {
-  if (treeNode.left) {
-    iterateTree3(treeNode.left);
-  }
-  console.log(treeNode.value);
-  if (treeNode.right) {
-    iterateTree3(treeNode.right);
-  }
+  if (treeNode.left) iterateTree(treeNode.left);
+  if (treeNode) console.log(treeNode.value);
+  if (treeNode.right) iterateTree(treeNode.right);
 }
 
 // 中序遍历 循环
@@ -52,13 +44,9 @@ function iterateTree4(treeNode) {
 
 // 后序遍历 递归
 function iterateTree5(treeNode) {
-  if (treeNode.left) {
-    iterateTree5(treeNode.left);
-  }
-  if (treeNode.right) {
-    iterateTree5(treeNode.right);
-  }
-  console.log(treeNode.value);
+  if (treeNode.left) iterateTree(treeNode.left);
+  if (treeNode.right) iterateTree(treeNode.right);
+  if (treeNode) console.log(treeNode.value);
 }
 
 // 后序遍历 循环
@@ -74,8 +62,7 @@ function iterateTree6(treeNode) {
     const stackTop = stack[stack.length - 1];
     if (!stackTop.right || stackTop.right === prev) {
       console.log(stackTop.value);
-      stack.pop();
-      prev = stackTop;
+      prev = stack.pop();
     } else {
       current = stackTop.right;
     }
