@@ -69,6 +69,17 @@ function iterateTree6(treeNode) {
   }
 }
 
+// 层次遍历
+function iterateTree7(root) {
+  const queue = [root];
+  while (queue.length > 0) {
+    const curr = queue.shift();
+    console.log(curr.value);
+    if (curr.left) queue.push(curr.left);
+    if (curr.right) queue.push(curr.right);
+  }
+}
+
 // const treeNode = {
 //   value: 1,
 //   left: {
@@ -96,4 +107,4 @@ function iterateTree6(treeNode) {
 //     }
 //   }
 // };
-// iterateTree(treeNode);
+// iterateTree7(treeNode);

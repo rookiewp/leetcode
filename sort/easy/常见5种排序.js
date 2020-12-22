@@ -87,15 +87,7 @@ function mergeSort(arr) {
         j++;
       }
     }
-    while (j < arr2.length) {
-      result.push(arr2[j]);
-      j++;
-    }
-    while (i < arr1.length) {
-      result.push(arr1[i]);
-      i++;
-    }
-    return result;
+    return result.concat(arr1.slice(i), arr2.slice(j));
   }
   function sort(arr) {
     if (arr.length <= 1) return arr;
